@@ -24,6 +24,8 @@ export default class App extends React.Component {
       ]
     }
     this.addWorkout = this.addWorkout.bind(this);
+    this.deleteWorkout = this.deleteWorkout.bind(this);
+
   }
 
   addWorkout(day, exercise, reps, lbs, set) {
@@ -44,11 +46,26 @@ export default class App extends React.Component {
     });
   }
 
+  
+  deleteWorkout(index){
+    const before = this.state.workouts.slice(0, index)
+    const after = this.state.workouts.slice(index+1)
+    const workouts = [...before, ...after]
+
+    
+    this.setState({
+      workouts
+    });
+
+    console.log(index);
+  }
+
+
   render() {
     return (
       <div>
         <AddWorkOut onSubmit={this.addWorkout}/>
-        <WorkOutLog workouts={this.state.workouts}/>
+        <WorkOutLog workouts={this.state.workouts} deleteWorkout={this.deleteWorkout}/>
       </div>
     );
   }

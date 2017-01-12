@@ -9,6 +9,8 @@ export default function WorkOutLog(props) {
       <td>{workout.reps}</td>
       <td>{workout.lbs}</td>
       <td>{workout.set}</td>
+      <td><button onClick={props.deleteWorkout.bind(null, index)}>delete</button></td>
+
     </tr>
     );
   });
@@ -25,6 +27,8 @@ export default function WorkOutLog(props) {
             <th>Reps</th>
             <th>Lbs</th>
             <th>Set</th>
+            <th>Delete</th>
+
           </tr>
         </thead>
           <tbody>
